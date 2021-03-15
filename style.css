@@ -1,0 +1,111 @@
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 800px;
+            background-color: rgba(131, 131, 130, 0.452);
+        }
+
+        ol, li{
+            list-style: none;
+        }
+
+        .header {
+            height: 50px;
+            background-color: #000;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .form {
+            margin: 0 auto;
+            min-width: 100px;
+            max-width: 600px;
+            position: relative;
+            line-height: 50px;
+            
+        }
+
+        .form label {
+            float: left;
+            cursor: pointer;
+            font-size: 24px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        .form input{
+            float: right;
+            height: 26px;
+            margin-top: 12px;
+            border: none;
+            width: 60%;
+            max-width: 300px;
+            text-indent: 10px;
+            border-radius: 5px;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.24), 0 1px 6px rgba(0, 0, 0, 0.45) inset;
+            margin-right: 20px ;
+        }
+
+        .content {
+            min-width: 100px;
+            max-width: 600px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .doing, .done {
+            position: relative;
+
+
+        }
+
+        .todocount, .donecount {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+        }
+
+        .doing h2, .done h2 {
+            margin-bottom: 20px;
+        }
+
+        .todolist li, .donelist li{
+            position: relative;
+            padding-left: 40px;
+            height: 30px;
+            line-height: 30px;
+            border-left: solid 10px rgba(60, 139, 230, 0.685);
+            border-radius: 5px;
+            background-color: rgba(245, 245, 245, 0.747);
+            margin-bottom: 20px;
+
+        }
+
+        .todolist li input, .donelist li input {
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            
+        }
+
+        .todolist li a, .donelist li a {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 20px;
+            background-color: rgba(179, 174, 174, 0.747);
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+        }
