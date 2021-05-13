@@ -70,7 +70,7 @@ window.onload = function() {
     todolistHtml.addEventListener('click', (e) => {
         if (e.target.className == 'itemClear') {
             for (let i = 0; i < datalist.length; i++) {
-                if (datalist[i].id == e.target.id) {
+                if (datalist[i].id.toString() === e.target.id) {
                     datalist.splice(i, 1);
                     break;
                 }
@@ -79,7 +79,7 @@ window.onload = function() {
         if (e.target.className == 'itemStatus') {
             console.log('change')
             for (item of datalist) {
-                if (item.id == e.target.id) {
+                if (item.id.toString() === e.target.id) {
                     item.done = !item.done;
                     break;
                 }
@@ -92,7 +92,7 @@ window.onload = function() {
     donelistHtml.addEventListener('click', (e) => {
         if (e.target.className == 'itemClear') {
             for (let i = 0; i < datalist.length; i++) {
-                if (datalist[i].id == e.target.id) {
+                if (datalist[i].id.toString() === e.target.id) {
                     datalist.splice(i, 1);
                     break;
                 }
@@ -100,7 +100,7 @@ window.onload = function() {
         }
         if (e.target.className == 'itemStatus') {
             for (let item of datalist) {
-                if (item.id == e.target.id) {
+                if (item.id.toString() === e.target.id) {
                     item.done = !item.done;
                     break;
                 }

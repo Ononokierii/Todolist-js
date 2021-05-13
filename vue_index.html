@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <div class="form">
+                <label for="title">Todolist</label>
+                <input type="form" id="title" placeholder="添加ToDo" v-model="todoitem" @keyup.enter="handleKeyUP">
+            </div>
+        </div>
+        <div class="content">
+            <div class="doing">
+                <h2>
+                    正在进行
+                    <span class="todocount">{{ todocount }}</span>
+                </h2>
+                <ol class="todolist">
+                    <li v-for="item in todoList" :key="item.id" :id="item.id">                     
+                        <input type="checkbox" @click="itemDone(item.id, item.flag)" :checked="item.flag">
+                        <span>{{ item.content }}</span>
+                        <button @click="itemClear(item.id, item.flag)" class="itemClear">-</button>     
+                    </li>
+                </ol>
+            </div>
+            <div class="done">
+                <h2>
+                    已完成
+                    <span class="donecount">{{ donecount }}</span>
+                </h2>
+                <ol class="donelist">
+                    <li v-for="item in doneList" :key="item.id" :id="item.id">
+                        <div>
+                            <input type="checkbox"  @click="itemDone(item.id, item.flag)" :checked="item.flag">
+                            <span>{{ item.content }}</span>
+                            <button @click="itemClear(item.id, item.flag)" class="itemClear">-</button>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                todoitem: '',
+                todoList: [],
+                doneList: []
+            }
+        },
+        methods: {
+            handleKeyUP(){
+                const item = {
+                    content: this.todoitem,
+                    flag: false,
+                    id: +new Date()
+                }
+                this.todoList.push(item);
+            },
+            itemDone(id, flag){
+                if(!flag){
+                    for(let i = 0; i < this.todoList.length; i++){
+                        if(this.todoList[i].id == id){
+                            this.todoList[i].flag = !this.todoList[i].flag;
+                            this.doneList.push(this.todoList.splice(i, 1)[0])
+                        }
+                    }
+                }else{
+                    for(let i = 0; i < this.doneList.length; i++){
+                        if(this.doneList[i].id == id){
+                            this.doneList[i].flag = !this.doneList[i].flag;
+                            this.todoList.push(this.doneList.splice(i, 1)[0])
+                        }
+                    }
+                }
+            },
+            itemClear(id, flag){
+                if(!flag){
+                    for(let i = 0; i < this.todoList.length; i++){
+                        if(this.todoList[i].id == id){
+                            this.todoList[i].flag = !this.todoList[i].flag;
+                            this.todoList.splice(i, 1);
+                        }
+                    }
+                }else{
+                    for(let i = 0; i < this.doneList.length; i++){
+                        if(this.doneList[i].id == id){
+                            this.doneList[i].flag = !this.doneList[i].flag;
+                            this.doneList.splice(i, 1);
+                        }
+                    }
+                }
+            }
+        },
+        computed: {
+            todocount(){
+                return this.todoList.length;
+            },
+            donecount(){
+                return this.doneList.length;
+            }
+        }
+    }).mount('#app');
+</script>
+</html>
